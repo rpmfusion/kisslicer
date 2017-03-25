@@ -4,7 +4,7 @@ Name:           kisslicer
 %global min     1
 %global rev     0
 Version:        %{maj}.%{min}.%{rev}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Keep It Simple Slicer
 URL:            http://www.kisslicer.com/
 
@@ -141,5 +141,8 @@ update-desktop-database &>/dev/null || :
 
 
 %changelog
+* Sat Mar 25 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.1.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Mon Feb 22 2016 Miro Hrončok <mhroncok@redhat.com> - 1.1.0-1
 - Initial package
