@@ -1,10 +1,10 @@
 Name:           kisslicer
 %global cname   KISSlicer
 %global maj     1
-%global min     1
+%global min     5
 %global rev     0
-Version:        %{maj}.%{min}.%{rev}
-Release:        2%{?dist}
+Version:        %{maj}.%{min}
+Release:        1%{?dist}
 Summary:        Keep It Simple Slicer
 URL:            http://www.kisslicer.com/
 
@@ -12,14 +12,15 @@ URL:            http://www.kisslicer.com/
 License:        Redistributable, no modification permitted
 
 # Download for both 64 and 32 bit
-Source0:        %{url}/files/%{maj}%{min}%{rev}/%{cname}_Linux64_%{maj}_%{min}_%{rev}.zip
-Source1:        %{url}/files/%{maj}%{min}%{rev}/%{cname}_Linux32_%{maj}_%{min}_%{rev}.zip
+Source0:        %{url}/files/%{maj}%{min}%{rev}/%{cname}_Linux64_%{maj}.%{min}_Release.zip
+Source1:        %{url}/files/%{maj}%{min}%{rev}/%{cname}_Linux32_%{maj}.%{min}_Release.zip
 # Get the Windows binary for icon extraction
-Source2:        %{url}/files/%{maj}%{min}%{rev}/%{cname}_Win32_%{maj}_%{min}_%{rev}.zip
+Source2:        %{url}/files/%{maj}%{min}%{rev}/%{cname}_Win32_%{maj}.%{min}_Release.zip
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  /usr/bin/wrestool
 BuildRequires:  /usr/bin/convert
+BuildRequires:  /usr/bin/file
 
 ExclusiveArch:  %{ix86} x86_64
 %global debug_package %{nil}
@@ -44,6 +45,9 @@ machine.
 %ifarch %{ix86}
 %setup -qTc -b1
 %endif
+
+# Conflicting file
+rm KISSlicer_quick_reference_EN.pdf
 
 # Unpack Windows binary
 %setup -qTD -a2
@@ -109,13 +113,16 @@ Icon=%{name}
 TryExec=%{_bindir}/%{name}
 Exec=%{_bindir}/%{name} %U
 Terminal=false
-MimeType=application/sla;application/x-3ds;model/mesh;image/x-3ds;model/x3d+xml;model/x3d+binary;
+MimeType=model/x.stl-binary;model/x.stl-ascii;application/sla;application/x-3ds;model/mesh;image/x-3ds;model/x3d+xml;model/x3d+binary;
 Categories=Graphics;3DGraphics;
 StartupNotify=true
 EOF
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
+for RES in $(ls hicolor); do
+  file hicolor/$RES/apps/kisslicer.png | grep "$(echo $RES | sed 's/x/ x /')"
+done
 
 %post
 /bin/touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
@@ -133,6 +140,7 @@ fi
 update-desktop-database &>/dev/null || :
 
 %files
+%doc KISSlicer_quick_reference_EN.pdf
 %{_bindir}/%{name}
 %{_bindir}/%{cname}
 %{_libexecdir}/%{cname}
@@ -141,6 +149,10 @@ update-desktop-database &>/dev/null || :
 
 
 %changelog
+* Sun Apr 02 2017 Miro Hrončok <mhroncok@redhat.com> - 1.5-1
+- New 1.5 version
+- Add new MIME types model/x.stl-binary and model/x.stl-ascii
+
 * Sat Mar 25 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.1.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
