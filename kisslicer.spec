@@ -4,7 +4,7 @@ Name:           kisslicer
 %global min     5
 %global rev     0
 Version:        %{maj}.%{min}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Keep It Simple Slicer
 URL:            http://www.kisslicer.com/
 
@@ -149,6 +149,9 @@ update-desktop-database &>/dev/null || :
 
 
 %changelog
+* Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.5-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Sun Apr 02 2017 Miro Hrončok <mhroncok@redhat.com> - 1.5-1
 - New 1.5 version
 - Add new MIME types model/x.stl-binary and model/x.stl-ascii
