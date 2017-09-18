@@ -4,7 +4,7 @@ Name:           kisslicer
 %global min     5
 %global rev     0
 Version:        %{maj}.%{min}
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Keep It Simple Slicer
 URL:            http://www.kisslicer.com/
 
@@ -38,12 +38,12 @@ machine.
 
 # Unpack 64bit binary
 %ifarch x86_64
-%setup -qTc -b0
+%setup -qTc -a0
 %endif
 
 # Unpack 32bit binary
 %ifarch %{ix86}
-%setup -qTc -b1
+%setup -qTc -a1
 %endif
 
 # Conflicting file
@@ -149,6 +149,9 @@ update-desktop-database &>/dev/null || :
 
 
 %changelog
+* Mon Sep 18 2017 Sérgio Basto <sergio@serjux.com> - 1.5-3
+- Fixup rpm setup macro use -a instead -b
+
 * Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
