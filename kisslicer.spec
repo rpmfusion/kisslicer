@@ -4,7 +4,7 @@ Name:           kisslicer
 %global min     5
 %global rev     0
 Version:        %{maj}.%{min}
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Keep It Simple Slicer
 URL:            http://www.kisslicer.com/
 
@@ -149,6 +149,9 @@ update-desktop-database &>/dev/null || :
 
 
 %changelog
+* Fri Jul 27 2018 RPM Fusion Release Engineering <sergio@serjux.com> - 1.5-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
+
 * Fri Mar 02 2018 RPM Fusion Release Engineering <leigh123linux@googlemail.com> - 1.5-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
