@@ -4,7 +4,7 @@ Name:           kisslicer
 %global min     5
 %global rev     0
 Version:        %{maj}.%{min}
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Keep It Simple Slicer
 URL:            http://www.kisslicer.com/
 
@@ -135,6 +135,9 @@ done
 
 
 %changelog
+* Tue Mar 05 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.5-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Sun Aug 19 2018 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.5-6
 - Rebuilt for Fedora 29 Mass Rebuild binutils issue
 
