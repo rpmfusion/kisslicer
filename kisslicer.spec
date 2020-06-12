@@ -1,10 +1,7 @@
 Name:           kisslicer
 %global cname   KISSlicer
-%global maj     1
-%global min     5
-%global rev     0
-Version:        %{maj}.%{min}
-Release:        9%{?dist}
+Version:        1.6.3
+Release:        1%{?dist}
 Summary:        Keep It Simple Slicer
 URL:            http://www.kisslicer.com/
 
@@ -12,10 +9,10 @@ URL:            http://www.kisslicer.com/
 License:        Redistributable, no modification permitted
 
 # Download for both 64 and 32 bit
-Source0:        %{url}/files/%{maj}%{min}%{rev}/%{cname}_Linux64_%{maj}.%{min}_Release.zip
-Source1:        %{url}/files/%{maj}%{min}%{rev}/%{cname}_Linux32_%{maj}.%{min}_Release.zip
+Source0:        %{url}uploads/1/5/3/8/15381852/%{name}_linux64_%{version}_release.zip
+Source1:        %{url}uploads/1/5/3/8/15381852/%{name}_linux32_%{version}_release.zip
 # Get the Windows binary for icon extraction
-Source2:        %{url}/files/%{maj}%{min}%{rev}/%{cname}_Win32_%{maj}.%{min}_Release.zip
+Source2:        %{url}uploads/1/5/3/8/15381852/%{name}_win32_%{version}_release_unpacked.zip
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  /usr/bin/wrestool
@@ -45,9 +42,6 @@ machine.
 %ifarch %{ix86}
 %setup -qTc -a1
 %endif
-
-# Conflicting file
-rm KISSlicer_quick_reference_EN.pdf
 
 # Unpack Windows binary
 %setup -qTD -a2
@@ -126,7 +120,6 @@ done
 
 
 %files
-%doc KISSlicer_quick_reference_EN.pdf
 %{_bindir}/%{name}
 %{_bindir}/%{cname}
 %{_libexecdir}/%{cname}
@@ -135,6 +128,9 @@ done
 
 
 %changelog
+* Thu Jun 11 2020 Sérgio Basto <sergio@serjux.com> - 1.6.3-1
+- Update to 1.6.3
+
 * Wed Feb 05 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.5-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
