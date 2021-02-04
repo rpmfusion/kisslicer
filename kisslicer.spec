@@ -1,7 +1,7 @@
 Name:           kisslicer
 %global cname   KISSlicer
 Version:        1.6.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Keep It Simple Slicer
 URL:            http://www.kisslicer.com/
 
@@ -128,6 +128,9 @@ done
 
 
 %changelog
+* Thu Feb 04 2021 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.6.3-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Wed Aug 19 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.6.3-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
